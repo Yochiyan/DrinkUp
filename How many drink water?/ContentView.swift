@@ -12,8 +12,12 @@ struct ContentView: View {
     @Environment(\.modelContext) private var context
     @Query private var bottles: [Bottle]
     @Query private var records: [DrinkRecord]
-   
     @State private var inputSize = ""
+    
+    
+    // 自販機価格（固定）
+    let vendingPricePer500ml = 130
+    let vendingSize = 540
     
     var body: some View {
         VStack(spacing: 20) {
@@ -26,7 +30,13 @@ struct ContentView: View {
                     .font(.headline)
                 
                 // 累計
-                Text("累計: \(records.reduce(0) { $0 + $1.amount }) ml")
+                let total = records.reduce(0) { $0 + $1.amount }
+                Text("累計: \(total) ml")
+                    .font(.headline)
+                
+                // 節約額
+                let saving = total * vendingPricePer500ml / vendingSize
+                Text("累計節約額: ¥\(saving)")//いろはす540mlと比較して。
                     .font(.headline)
                 
                 Button(action: {
@@ -54,17 +64,17 @@ struct ContentView: View {
                 
             } else {
                 // 初回入力
-                Text("ボトル容量を入力してください")
-                TextField("例: 500", text: $inputSize)
+                Text("ボトル容量(ml)を入力してください")
+                TextField("例: 300", text: $inputSize)
                     .keyboardType(.numberPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 200)
-                
                 Button("保存") {
                     if let size = Int(inputSize) {
                         let newBottle = Bottle(size: size)
                         context.insert(newBottle)
                         try? context.save()
+                    
                     }
                 }
                 .padding()
