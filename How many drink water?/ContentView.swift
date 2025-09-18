@@ -9,53 +9,82 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @Environment(\.modelContext) private var context
+    @Query private var bottles: [Bottle]
+    @Query private var records: [DrinkRecord]
+   
+    @State private var inputSize = ""
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        VStack(spacing: 20) {
+            if let bottle = bottles.first {
+                Text("ボトル容量: \(bottle.size) ml")
+                    .font(.title)
+                
+                // 今日の合計
+                Text("今日の合計: \(todayTotal()) ml")
+                    .font(.headline)
+                
+                // 累計
+                Text("累計: \(records.reduce(0) { $0 + $1.amount }) ml")
+                    .font(.headline)
+                
+                Button(action: {
+                    let newRecord = DrinkRecord(date: Date(), amount: bottle.size)
+                    context.insert(newRecord)
+                    try? context.save()
+                }) {
+                    Text("飲んだ！ (\(bottle.size)ml)")
+                        .font(.title2)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                // 履歴リスト（簡易）
+                List(records) { record in
+                    VStack(alignment: .leading) {
+                        Text("\(record.amount) ml")
+                        Text(record.date.formatted(date: .abbreviated, time: .shortened))
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                
+            } else {
+                // 初回入力
+                Text("ボトル容量を入力してください")
+                TextField("例: 500", text: $inputSize)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 200)
+                
+                Button("保存") {
+                    if let size = Int(inputSize) {
+                        let newBottle = Bottle(size: size)
+                        context.insert(newBottle)
+                        try? context.save()
                     }
                 }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
         }
+        .padding()
+    }
+    
+    // 今日の合計を算出
+    private func todayTotal() -> Int {
+        let calendar = Calendar.current
+        return records.filter { calendar.isDateInToday($0.date) }
+                      .reduce(0) { $0 + $1.amount }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: [Bottle.self, DrinkRecord.self], inMemory: true)
 }

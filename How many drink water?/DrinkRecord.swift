@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import SwiftData
+
+@Model
+class DrinkRecord {
+    var date: Date
+    var amount: Int
+    
+    init(date: Date, amount: Int) {
+        self.date = date
+        self.amount = amount
+    }
+}
