@@ -44,7 +44,7 @@ struct ContentView: View {
                     context.insert(newRecord)
                     try? context.save()
                 }) {
-                    Text("飲んだ！ (\(bottle.size)ml)")
+                    Text("飲み切った！")
                         .font(.title2)
                         .padding()
                         .background(Color.blue)
