@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var inputSize = ""
     @State private var today = Date()
     @State private var now: Date = Date()
+    @State private var showBottleEdit: Bool = false
     
     // 自販機価格（固定）
     let vendingPricePer = 120
@@ -27,6 +28,13 @@ struct ContentView: View {
                 Text("ボトル容量: \(bottle.size) ml")
                     .font(.title)
                     .fontWeight(.bold)
+                Button("編集") {
+                showBottleEdit = true
+                                }
+                .sheet(isPresented: $showBottleEdit) {
+                BottleEditView(bottle: bottle)
+                                }
+                                
                 
                 // 今日の合計
                 Text("今日の合計: \(todayTotal()) ml")
@@ -61,7 +69,7 @@ struct ContentView: View {
                 }
                 
                 // 履歴リスト（簡易）
-                List(records) { record in
+                List(records.reversed(), id: \.self) { record in
                     VStack(alignment: .leading) {
                         Text("\(record.amount) ml")
                             .fontWeight(.bold)
