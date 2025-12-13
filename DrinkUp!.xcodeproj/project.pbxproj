@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		590D7DC42E7C360200B9086E /* How many drink water? */ = {
+		590D7DC42E7C360200B9086E /* DrinkUp! */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "How many drink water?";
+			path = "DrinkUp!";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		590D7DB92E7C360200B9086E = {
 			isa = PBXGroup;
 			children = (
-				590D7DC42E7C360200B9086E /* How many drink water? */,
+				590D7DC42E7C360200B9086E /* DrinkUp! */,
 				590D7DC32E7C360200B9086E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				590D7DC42E7C360200B9086E /* How many drink water? */,
+				590D7DC42E7C360200B9086E /* DrinkUp! */,
 			);
 			name = "DrinkUp!";
 			packageProductDependencies = (
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 590D7DBD2E7C360200B9086E /* Build configuration list for PBXProject "How many drink water?" */;
+			buildConfigurationList = 590D7DBD2E7C360200B9086E /* Build configuration list for PBXProject "DrinkUp!" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		590D7DBD2E7C360200B9086E /* Build configuration list for PBXProject "How many drink water?" */ = {
+		590D7DBD2E7C360200B9086E /* Build configuration list for PBXProject "DrinkUp!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				590D7DCD2E7C360400B9086E /* Debug */,
