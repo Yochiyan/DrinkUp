@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		590D7DC22E7C360200B9086E /* How many drink water?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "How many drink water?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		590D7DC22E7C360200B9086E /* DrinkUp!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrinkUp!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		590D7DC32E7C360200B9086E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				590D7DC22E7C360200B9086E /* How many drink water?.app */,
+				590D7DC22E7C360200B9086E /* DrinkUp!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		590D7DC12E7C360200B9086E /* How many drink water? */ = {
+		590D7DC12E7C360200B9086E /* DrinkUp! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 590D7DCF2E7C360400B9086E /* Build configuration list for PBXNativeTarget "How many drink water?" */;
+			buildConfigurationList = 590D7DCF2E7C360400B9086E /* Build configuration list for PBXNativeTarget "DrinkUp!" */;
 			buildPhases = (
 				590D7DBE2E7C360200B9086E /* Sources */,
 				590D7DBF2E7C360200B9086E /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				590D7DC42E7C360200B9086E /* How many drink water? */,
 			);
-			name = "How many drink water?";
+			name = "DrinkUp!";
 			packageProductDependencies = (
 			);
 			productName = "How many drink water?";
-			productReference = 590D7DC22E7C360200B9086E /* How many drink water?.app */;
+			productReference = 590D7DC22E7C360200B9086E /* DrinkUp!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				590D7DC12E7C360200B9086E /* How many drink water? */,
+				590D7DC12E7C360200B9086E /* DrinkUp! */,
 			);
 		};
 /* End PBXProject section */
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		590D7DCF2E7C360400B9086E /* Build configuration list for PBXNativeTarget "How many drink water?" */ = {
+		590D7DCF2E7C360400B9086E /* Build configuration list for PBXNativeTarget "DrinkUp!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				590D7DD02E7C360400B9086E /* Debug */,
