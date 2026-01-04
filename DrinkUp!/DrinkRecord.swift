@@ -12,7 +12,8 @@ import SwiftData
 class DrinkRecord {
     var date: Date
     var amount: Int
-    
+    var syncedToHealth: Bool = false   // ← 追加
+
     init(date: Date, amount: Int) {
         self.date = date
         self.amount = amount

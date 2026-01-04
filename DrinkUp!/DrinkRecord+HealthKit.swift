@@ -1,4 +1,4 @@
-import Foundation
+/*import Foundation
 
 extension DrinkRecord {
     // Save a single water entry to HealthKit. Amount is in milliliters.
@@ -9,3 +9,4 @@ extension DrinkRecord {
         await HealthKitManager.shared.syncAll(records: [record])
     }
 }
+*/

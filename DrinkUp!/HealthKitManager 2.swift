@@ -1,4 +1,4 @@
-import Foundation
+/*import Foundation
 import HealthKit
 
 final class HealthKitManager {
@@ -43,3 +43,4 @@ final class HealthKitManager {
         }
     }
 }
+*/
